@@ -32,7 +32,7 @@ export default function ProductCard({ product }: Props) {
           </span>
         )}
 
-        <ProductActions title={product.title} />
+        <ProductActions title={product.title} productId={product._id} />
       </div>
 
       <div className="mt-3 flex flex-1 flex-col gap-1.5">
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: Props) {
               </span>
             )}
           </div>
-          <AddToCartButton title={product.title} />
+          <AddToCartButton title={product.title}  id={product._id}/>
         </div>
       </div>
     </article>

@@ -85,7 +85,7 @@ export default function ProductInfo({ product }: Props) {
 
       <hr className="border-line" />
 
-      <ProductPurchase stock={product.quantity} />
+      <ProductPurchase stock={product.quantity} id={product._id} />
 
       <ul className="space-y-2 text-sm text-subtle">
         <li className="flex items-center gap-2">

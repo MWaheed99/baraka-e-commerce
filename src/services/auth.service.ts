@@ -44,8 +44,13 @@
 // }
 
 "use server";
-
+import {
+  type ForgotPasswordValues,
+  type ResetPasswordValues,
+} from "@/schemas/auth.schema";
 import { type RegisterValues } from "@/schemas/auth.schema";
+import { LoginValues } from "@/schemas/login.schema";
+import { cookies } from "next/headers";
 
 const BASE_URL = "https://ecommerce.routemisr.com/api/v1";
 
@@ -63,4 +68,54 @@ export async function registerUser(
   const json = await res.json();
 
   return json;
+}
+
+export async function loginUser(
+  values: LoginValues,
+) {
+
+  const res = await fetch(`${BASE_URL}/auth/signin`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+    cache: "no-store",
+  });
+
+  const json = await res.json();
+
+  const cookie = await cookies();
+  cookie.set("token", json.token, { 
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+    httpOnly: true,
+    secure: true,
+   });
+
+  return json;
+}
+
+
+export async function forgotPassword(values: ForgotPasswordValues) {
+  const res = await fetch(`${BASE_URL}/auth/forgotPasswords`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+    cache: "no-store",
+  });
+
+  const json = await res.json();
+
+  return { ...json, ok: res.ok };
+}
+
+export async function resetPassword(values: ResetPasswordValues) {
+  const res = await fetch(`${BASE_URL}/auth/resetPassword`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+    cache: "no-store",
+  });
+
+  const json = await res.json();
+
+  return { ...json, ok: res.ok };
 }

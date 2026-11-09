@@ -20,3 +20,18 @@ export const registerSchema = z
   });
 
 export type RegisterValues = z.infer<typeof registerSchema>;
+
+
+
+export const forgotPasswordSchema = z.object({
+  email: z.email("Enter a valid email address"),
+});
+
+export type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
+
+export const resetPasswordSchema = z.object({
+  email: z.email("Enter a valid email address"),
+  newPassword: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+export type ResetPasswordValues = z.infer<typeof resetPasswordSchema>;
