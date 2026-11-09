@@ -16,6 +16,19 @@ const nextConfig: NextConfig = {
       },
     },
   },
+
+
+//https://ecommerce.routemisr.com/api/v1/products
+
+  images: {
+    remotePatterns:[
+      {
+        protocol: 'https',
+        hostname: 'ecommerce.routemisr.com',
+        pathname: '/**'
+      }
+    ]
+  }
 };
 
 export default nextConfig;
