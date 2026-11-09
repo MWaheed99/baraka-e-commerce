@@ -13,7 +13,7 @@ export default async function ProductsSection() {
     <section>
       <SectionHeader title="Most popular products" />
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
         { featured.length > 0 ? featured.map((product) => (
           <ProductCard key={product._id} product={product} />
         )): (

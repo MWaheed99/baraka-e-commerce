@@ -13,7 +13,7 @@ export default async function SimilarProducts({ categoryId, currentId }: Props) 
   return (
     <section>
       <SectionHeader title="You may also like" />
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-4 md:gap-6">
         {similar.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}

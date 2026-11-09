@@ -12,7 +12,6 @@ const columns: { title: string; links: NavLink[] }[] = [
 			{ href: "/products?sort=new", label: "New arrivals" },
 			{ href: "/products?sort=best", label: "Best sellers" },
 			{ href: "/products?sale=true", label: "Sale" },
-			{ href: "/search", label: "Search" },
 		],
 	},
 	{
@@ -20,8 +19,8 @@ const columns: { title: string; links: NavLink[] }[] = [
 		links: [
 			{ href: "/login", label: "Login" },
 			{ href: "/register", label: "Register" },
-			{ href: "/account", label: "My account" },
-			{ href: "/orders", label: "My orders" },
+			{ href: "/settings", label: "My account" },
+			{ href: "/allorders", label: "My orders" },
 			{ href: "/wishlist", label: "Wishlist" },
 			{ href: "/cart", label: "Cart" },
 		],
@@ -29,10 +28,7 @@ const columns: { title: string; links: NavLink[] }[] = [
 	{
 		title: "Help",
 		links: [
-			{ href: "/contact", label: "Contact us" },
-			{ href: "/faq", label: "FAQ" },
-			{ href: "/returns", label: "Shipping & returns" },
-			{ href: "/orders", label: "Track my order" },
+			{ href: "/allorders", label: "Track my order" },
 			{ href: "/checkout", label: "Checkout" },
 		],
 	},

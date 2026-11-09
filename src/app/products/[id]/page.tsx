@@ -28,7 +28,7 @@ export default async function ProductPage({ params }: Props) {
         }
       >
         <div className="space-y-12 pt-4 md:space-y-16 md:pt-8">
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
         <ProductGallery images={images} title={product.title} />
         <ProductInfo product={product} />
       </div>

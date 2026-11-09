@@ -19,7 +19,7 @@ export default function ProductInfo({ product }: Props) {
   const lowStock = inStock && product.quantity <= 10;
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex min-w-0 flex-col gap-5">
       <div className="flex flex-wrap items-center gap-2">
         <Tag>{product.category.name}</Tag>
         {product.subcategory.map((s) => (
@@ -40,7 +40,7 @@ export default function ProductInfo({ product }: Props) {
         <span className="font-medium">{product.brand.name}</span>
       </div>
 
-      <h1 className="text-2xl font-extrabold text-ink sm:text-3xl">
+      <h1 className="text-2xl font-extrabold break-words text-ink sm:text-3xl">
         {product.title}
       </h1>
 

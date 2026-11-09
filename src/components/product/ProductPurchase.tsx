@@ -1,21 +1,23 @@
 "use client";
 
-import {  useState } from "react";
+import {  useState, useTransition } from "react";
 import {  Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuantityStepper from "@/components/shared/QuantityStepper";
 import { addToCart } from "@/services/addToCart.service";
 import { toast } from "../ui/toast";
 import { useCart } from "@/context/CartContext";
+import { addToWishlist } from "@/services/wishlist.service";
 
 type Props = { stock: number,
   id : string
  };
 
 export default function ProductPurchase({ stock , id}: Props) {
-  const [quantity, setQuantity] = useState(1);
 
-  const [wished, setWished] = useState(false);
+  
+    const [pending, startTransition] = useTransition();
+    const [wished, setWished] = useState(false);
   const soldOut = stock <= 0;
 const { updateNumberOfCartItems } = useCart();
   async function handleAddToCart(id : string) {
@@ -34,12 +36,31 @@ const { updateNumberOfCartItems } = useCart();
       }
     }
 
+    function handleAdd() {
+        if (wished || pending) return;
+    
+        startTransition(async () => {
+          const result = await addToWishlist(id);
+    
+          if (result.status === "success") {
+            setWished(true);
+            toast.add({ type: "success", title: result.message });
+          } else {
+            toast.add({
+              type: "error",
+              title: result.message ?? "Could not add to the wishlist.",
+            });
+          }
+        });
+      }
+    
+
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center gap-3">
+      {/* <div className="flex flex-wrap items-center gap-3">
         <span className="text-sm font-semibold text-ink">Quantity</span>
         <QuantityStepper value={quantity} onChange={setQuantity} max={stock} />
-      </div>
+      </div> */}
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button
@@ -55,7 +76,7 @@ const { updateNumberOfCartItems } = useCart();
           type="button"
           variant="outline"
           aria-pressed={wished}
-          onClick={() => setWished((v) => !v)}
+          onClick={handleAdd}
           className="h-12 text-base transition-all hover:-translate-y-0.5 sm:px-6"
         >
           <Heart
