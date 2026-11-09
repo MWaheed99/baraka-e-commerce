@@ -33,7 +33,9 @@ import type { Order } from "@/interfaces/order";
 
 export async function getOrders() {
  
-    const cookie = (await cookies()).get("next-auth.session-token")?.value;
+    const storedCookies = await cookies()
+
+  const cookie = storedCookies.get("next-auth.session-token")?.value || storedCookies.get("__Secure-next-auth.session-token")?.value;
 
   const tokenAfterDecode = await decode({
     token: cookie!,

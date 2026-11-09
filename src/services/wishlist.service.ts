@@ -6,7 +6,9 @@ import type { WishlistResponse } from "@/interfaces/wishlist";
 
 import { revalidatePath, updateTag } from "next/cache";
 export async function getWishlist(): Promise<WishlistResponse> {
-  const cookie = (await cookies()).get("next-auth.session-token")?.value;
+  const storedCookies = await cookies()
+
+  const cookie = storedCookies.get("next-auth.session-token")?.value || storedCookies.get("__Secure-next-auth.session-token")?.value;
 
   if (!cookie) {
     throw new Error("You need to log in to see your wishlist");
@@ -37,7 +39,9 @@ export async function getWishlist(): Promise<WishlistResponse> {
 
 
 export async function addToWishlist(productId: string) {
-  const cookie = (await cookies()).get("next-auth.session-token")?.value;
+  const storedCookies = await cookies()
+
+  const cookie = storedCookies.get("next-auth.session-token")?.value || storedCookies.get("__Secure-next-auth.session-token")?.value;
 
   if (!cookie) {
     return { status: "fail", message: "Please log in first." };
@@ -72,7 +76,9 @@ export async function addToWishlist(productId: string) {
 }
 
 export async function removeFromWishlist(id: string) {
-  const cookie = (await cookies()).get("next-auth.session-token")?.value;
+  const storedCookies = await cookies()
+
+  const cookie = storedCookies.get("next-auth.session-token")?.value || storedCookies.get("__Secure-next-auth.session-token")?.value;
 
   if (!cookie) {
     return {

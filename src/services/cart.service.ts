@@ -5,7 +5,9 @@ import { cookies } from "next/headers";
 
 export async function getCart () {
 
-  const cookie = (await cookies()).get("next-auth.session-token")?.value;
+  const storedCookies = await cookies()
+
+  const cookie = storedCookies.get("next-auth.session-token")?.value || storedCookies.get("__Secure-next-auth.session-token")?.value;
 
   const tokenAfterDecode = await decode({
     token: cookie!,
