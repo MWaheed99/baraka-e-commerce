@@ -60,7 +60,7 @@ export default function CategoriesSlider({ categories }: Props) {
     >
       {categories.map((category) => (
         <SwiperSlide key={category._id}>
-          <Link href={`/products?category=${category._id}`} className="group block">
+          <Link href={`/categories/${category._id}`} className="group block">
             <div className="relative h-36 overflow-hidden rounded-xl bg-sand sm:h-44 lg:h-52">
               <Image
                 src={category.image}

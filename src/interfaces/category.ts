@@ -19,3 +19,6 @@ export interface CategoriesResponse {
   metadata: Metadata;
   data: Category[];
 }
+export interface CategoryResponse {
+  data: Category;
+}

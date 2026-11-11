@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 
@@ -7,10 +8,17 @@ type Props = {
   title: string;
   subtitle?: string;
   icon: LucideIcon;
+  image?: string;
   breadcrumbs: Crumb[];
 };
 
-export default function PageHeader({ title, subtitle, icon: Icon, breadcrumbs }: Props) {
+export default function PageHeader({
+  title,
+  subtitle,
+  icon: Icon,
+  image,
+  breadcrumbs,
+}: Props) {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-brand to-ink text-white">
       <div
@@ -50,12 +58,22 @@ export default function PageHeader({ title, subtitle, icon: Icon, breadcrumbs }:
         </nav>
 
         <div className="mt-4 flex items-center gap-4 sm:mt-6 sm:gap-5">
-          <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/20 transition-transform duration-300 hover:scale-105 sm:size-20">
-            <Icon className="size-7 sm:size-10" aria-hidden="true" />
+          <div className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white/15 ring-1 ring-white/20 transition-transform duration-300 hover:scale-105 sm:size-20">
+            {image ? (
+              <Image
+                src={image}
+                alt=""
+                fill
+                sizes="80px"
+                className="object-cover"
+              />
+            ) : (
+              <Icon className="size-7 sm:size-10" aria-hidden="true" />
+            )}
           </div>
 
           <div className="min-w-0">
-            <h1 className="text-2xl font-extrabold sm:text-4xl md:text-5xl">
+            <h1 className="text-2xl font-extrabold wrap-anywhere sm:text-4xl md:text-5xl">
               {title}
             </h1>
             {subtitle && (
