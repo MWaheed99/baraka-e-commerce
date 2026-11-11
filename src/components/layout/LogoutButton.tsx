@@ -10,6 +10,7 @@ export default function LogoutButton() {
   function handleLogout() {
     signOut({
       callbackUrl: "/",
+      redirect: false,
     });
   }
 
