@@ -4,9 +4,15 @@ import ProductInfo from "@/components/product/ProductInfo";
 import ProductReviews from "@/components/product/ProductReviews";
 import SimilarProducts from "@/components/product/SimilarProducts";
 import { getProduct } from "@/services/products.service";
+import { Metadata } from "next";
 
 type Props = { params: Promise<{ id: string }> };
 
+
+export const metadata: Metadata = {
+  title: "Product | Baraka",
+  description: "Browse all products",
+};
 
 
 export default async function ProductPage({ params }: Props) {

@@ -5,8 +5,17 @@ import PageHeader from "@/components/shared/PageHeader";
 import ProductsGrid from "@/components/shared/ProductsGrid";
 import { getCategory } from "@/services/categories.service";
 import { getProductsByCategory } from "@/services/products.service";
+import type { Metadata } from "next";
+
+
 
 type Props = { params: Promise<{ id: string }> };
+
+export const metadata: Metadata = {
+  title: "Category | Baraka",
+  description: "Browse all products",
+};
+
 
 async function CategoryContent({ params }: Props) {
   const { id } = await params;

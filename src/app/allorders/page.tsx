@@ -5,6 +5,12 @@ import PageHeader from "@/components/shared/PageHeader";
 import OrderCard from "@/components/orders/OrderCard";
 import { buttonVariants } from "@/components/ui/button";
 import { getOrders } from "@/services/orders.service";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Orders | Baraka",
+  description: "Browse all products",
+};
 
 async function OrdersContent() {
   const orders = await getOrders();

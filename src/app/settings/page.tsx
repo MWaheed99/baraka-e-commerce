@@ -3,7 +3,12 @@ import PageHeader from "@/components/shared/PageHeader";
 import FormCard from "@/components/shared/FormCard";
 import ChangePasswordForm from "@/components/settings/ChangePasswordForm";
 import ForgotPasswordForm from "@/components/settings/ForgotPasswordForm";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Settings | Baraka",
+  description: "Browse all products",
+};
 export default function SettingsPage() {
   return (
     <>

@@ -8,6 +8,12 @@ import { buttonVariants } from "@/components/ui/button";
 import type { CartResponse } from "@/interfaces/cart";
 import { getCart } from "@/services/cart.service";
 // import { getCart } from "@/services/cart.service";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Cart | Baraka",
+	description: "Browse all products",
+};
 
 async function CartContent() {
 	const cart: CartResponse = await getCart();

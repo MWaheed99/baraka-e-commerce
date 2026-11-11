@@ -1,6 +1,12 @@
 import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
+import { Metadata } from "next";
 
+
+export const metadata: Metadata = {
+  title: "Login | Baraka",
+  description: "Browse all products",
+};
 export default function LoginPage() {
   return (
     <div className="container flex justify-center py-6 md:py-12">

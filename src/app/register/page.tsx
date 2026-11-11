@@ -1,6 +1,11 @@
 import Link from "next/link";
 import RegisterForm from "@/components/auth/RegisterForm";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Register | Baraka",
+  description: "Browse all products",
+};
 export default function RegisterPage() {
   return (
     <div className="container flex justify-center py-6 md:py-12">

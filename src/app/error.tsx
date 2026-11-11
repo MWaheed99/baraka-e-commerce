@@ -6,6 +6,12 @@ import Link from "next/link";
 import { AlertTriangle, Home, RefreshCw } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Error | Baraka",
+  description: "Browse all products",
+};
 type Props = {
   error: Error & { digest?: string };
   reset: () => void;

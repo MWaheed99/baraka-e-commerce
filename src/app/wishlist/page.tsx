@@ -6,7 +6,12 @@ import ProductCard from "@/components/shared/ProductCard";
 import { buttonVariants } from "@/components/ui/button";
 import { getWishlist } from "@/services/wishlist.service";
 import RemoveFromWishlistButton from "@/components/wishlist/RemoveFromWishlistButton";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+	title: "Wishlist | Baraka",
+	description: "Browse all products",
+};
 async function WishlistContent() {
 	const wishlist = await getWishlist();
 	const products = wishlist.data;

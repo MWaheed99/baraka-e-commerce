@@ -1,5 +1,11 @@
 import CashPayment from "@/components/paymentForm/CashPayment";
-import React from "react";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Checkout | Baraka",
+  description: "Browse all products",
+};
 
 export default function Checkout() {
 	return (

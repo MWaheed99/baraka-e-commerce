@@ -2,6 +2,12 @@ import { Tags } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import BrandCard from "@/components/brands/BrandCard";
 import { getBrands } from "@/services/brands.service";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Brands | Baraka",
+  description: "Browse all products",
+};
 
 export default async function BrandsPage() {
   const brands = await getBrands();

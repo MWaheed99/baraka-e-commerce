@@ -2,6 +2,13 @@ import { ShoppingBag } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import ProductCard from "@/components/shared/ProductCard";
 import { getProducts } from "@/services/products.service";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Products | Baraka",
+  description: "Browse all products",
+};
 
 export default async function ShopPage() {
   const products = await getProducts();
