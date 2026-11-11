@@ -52,6 +52,7 @@ import { type RegisterValues } from "@/schemas/auth.schema";
 import { LoginValues } from "@/schemas/login.schema";
 import { cookies } from "next/headers";
 
+
 const BASE_URL = "https://ecommerce.routemisr.com/api/v1";
 
 export async function registerUser(
@@ -119,3 +120,16 @@ export async function resetPassword(values: ResetPasswordValues) {
 
   return { ...json, ok: res.ok };
 }
+
+
+
+// export async function handleLogout() {
+//     // signOut({
+//     //   callbackUrl: "/login",
+//     // });
+
+//     const cookie = await cookies();
+//     cookie.delete("token");
+
+
+//   }
